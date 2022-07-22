@@ -1,15 +1,13 @@
 // src/views/profile.js
 
 import React from 'react';
-import { Container } from 'react-bootstrap';
-import Table from 'react-bootstrap/Table';
 import PaginateTable from '../components/paginateTable';
 // import { useAuth0 } from '@auth0/auth0-react';
 
  const Profile = () => {
   return (
-    <div class="table-responsive text-nowrap">
-      <table class="table table-sm"
+    <div className="table-responsive text-nowrap">
+      <table className="table table-sm"
         style={{ marginTop: "10vh" }}>
         <thead>
           <tr className="table-success">

@@ -13,7 +13,7 @@ function Highlight() {
       <br />
       <Form.Control id="disabledTextInput3" placeholder="IdEnvio" />
       <br />
-      <select class="browser-default custom-select">
+      <select className="browser-default custom-select">
         <option value="1">Envio flex</option>
         <option value="2">Mercado Envios</option>
         <option value="3">Retira en domicilio</option>
