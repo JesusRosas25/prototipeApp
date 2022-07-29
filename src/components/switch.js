@@ -1,16 +1,56 @@
-import React from 'react';
-import Form from 'react-bootstrap/Form';
+import React, {useState} from 'react';
+import { Col, Form } from 'react-bootstrap';
+import { useFormik } from 'formik'
 
-function Switch() {
+function ReactSwitch(props) {
   return (
-    <Form>
-      <div className="custom-control custom-switch">
-        <input type="checkbox" className="custom-control-input" id="customSwitches" />
-        <label className="custom-control-label" htmlFor="customSwitches">Activar/Desactivar</label>
-      </div>
-      <br />
-    </Form>
-  );
+    <>
+      <Col md={props.col}>
+        <Form.Group>
+          <Form.Switch
+            type="switch"
+            id={props.id}
+            name={props.name}
+            label={props.label}
+            checked={props.checked}
+            onChange={props.onChange}
+          />
+        </Form.Group>
+      </Col>
+    </>
+  )
 }
 
-export default Switch;
+export default function Switch() {
+  const [checked, setChecked] = useState(false)
+  const { handleSubmit, values } = useFormik({
+    initialValues: {
+      switch: checked
+    },
+    enableReinitialize: true,
+    onSubmit: (values, { setSubmitting }) => {
+      setTimeout(() => {
+        alert(JSON.stringify(values, null, 2))
+        setSubmitting(false)
+      }, 400)
+    }
+  })
+  return (
+    <form className="form" onSubmit={handleSubmit}>
+      <ReactSwitch
+        name="switch"
+        label="Switch"
+        id="switch"
+        checked={checked}
+        onChange={() => setChecked(!checked)}
+      />
+      {/* just for testing */}
+      <button type="submit" disabled={!checked}>
+        Submit
+      </button>
+      <br />
+      <br />
+      <pre>{JSON.stringify(values, null, 2)}</pre>
+    </form>
+  )
+}
